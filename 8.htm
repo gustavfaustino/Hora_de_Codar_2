@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Made by GustavG -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #container-resultado {
+        display: none;
+      }
+      #resultado {
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        white-space: pre-line;
+      }
+      button {
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Escreva um programa que calcule a média de quatro números
+      informados pelo usuário, mas somente se esses números forem maiores que 0 
+      e menores que 10. No final, se a média for maior que cinco o usuário
+      receberá uma mensagem "Você passou no teste". 
+      Em qualquer outra situação, ele receberá uma mensagem de "tente novamente"
+E -->
+    <div class="container p-2">
+      <div class="row">
+        <!-- Número 1 -->
+        <div class="col">
+          <label for="numero1" class="form-label"
+            >Digite o valor do 1° número:</label
+          >
+          <input
+            type="number"
+            id="numero1"
+            class="form-control"
+            placeholder="1° número aqui"
+          />
+        </div>
+        <!-- Número 2 -->
+        <div class="col">
+          <label for="numero2" class="form-label"
+            >Digite o valor do 2° número:</label
+          >
+          <input
+            type="number"
+            id="numero2"
+            class="form-control"
+            placeholder="2° número aqui"
+          />
+        </div>
+
+        <!-- Número 3 -->
+        <div class="col">
+          <label for="numero3" class="form-label"
+            >Digite o valor do 3° número:</label
+          >
+          <input
+            type="number"
+            id="numero3"
+            class="form-control"
+            placeholder="3° número aqui"
+          />
+        </div>
+
+        <!-- Número 4 -->
+        <div class="col">
+          <label for="numero4" class="form-label"
+            >Digite o valor do 4° número:</label
+          >
+          <input
+            type="number"
+            id="numero4"
+            class="form-control"
+            placeholder="4° número aqui"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Botão -->
+    <div class="col text-center" id="botao">
+      <button class="btn btn-default" onclick="mediaEspecifica()">
+        Clique aqui!
+      </button>
+    </div>
+
+    <!-- Resultado -->
+    <div id="container-resultado">
+      <p id="resultado"></p>
+    </div>
+
+    <!-- Função JS -->
+    <script>
+      function mediaEspecifica() {
+        numeros = [
+          parseFloat(document.getElementById("numero1").value),
+          parseFloat(document.getElementById("numero2").value),
+          parseFloat(document.getElementById("numero3").value),
+          parseFloat(document.getElementById("numero4").value),
+        ];
+        //   Verificação
+        const todosSaoNumeros = numeros.every((num) => !isNaN(num));
+
+        if (todosSaoNumeros) {
+          // Loop para verificar numeros entre 0 e 10
+          let soma = 0;
+          let quantia = 0;
+
+          for (let i = 0; i < numeros.length; i++) {
+            if (numeros[i] > 0 && numeros[i] < 10) {
+              soma += numeros[i];
+              quantia++;
+            }
+          }
+
+          let media = soma / quantia;
+
+          // Resultados
+          if (media > 5) {
+            alert(`Você passou no teste com a média ${media}!`);
+          } else {
+            alert("Tente novamente :(");
+          }
+        } else {
+          alert("Digite valores númericos válidos em todos os campos!");
+        }
+      }
+    </script>
+  </body>
+</html>
