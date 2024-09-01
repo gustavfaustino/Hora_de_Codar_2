@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Made by GustavG -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Positivo, Negativo ou Neutro?</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      #container-resultado {
+        display: none;
+      }
+      #resultado {
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Faça um programa que leia um valor informado pelo usuário
+     e diga se o valor informado é positivo, negativo ou zero. -->
+
+    <!-- Número 1 -->
+    <div class="mb-3">
+      <label for="numero" class="form-label">Digite um número inteiro:</label>
+      <input
+        type="number"
+        id="numero"
+        class="form-control"
+        placeholder="Seu número aqui"
+      />
+    </div>
+
+    <button onclick="lerNumero()">Clique aqui!</button>
+
+    <!-- Resultado -->
+    <div class="container-resultado">
+      <p id="resultado"></p>
+    </div>
+
+    <!-- Função JavaScript -->
+    <script>
+      function lerNumero() {
+        const numero = document.getElementById("numero").value;
+
+        if (numero) {
+          if (numero > 0) {
+            // Positivo
+            document.getElementById(
+              "resultado"
+            ).textContent = `Seu número é positivo!`;
+            document.getElementById("container-resultado").style.display =
+              "block";
+          } else if (numero < 0) {
+            // Negativo
+            document.getElementById(
+              "resultado"
+            ).textContent = `Seu número é negativo!`;
+            document.getElementById("container-resultado").style.display =
+              "block";
+          } else {
+            // Neutro
+            document.getElementById(
+              "resultado"
+            ).textContent = `Seu número é neutro, ou seja, igual a zero!`;
+            document.getElementById("container-resultado").style.display =
+              "block";
+          }
+        } else {
+          // Inválido
+          document.getElementById(
+              "resultado"
+            ).textContent = `Digite um número válido, ora!`;
+            document.getElementById("container-resultado").style.display =
+              "block";
+        }
+      }
+    </script>
+  </body>
+</html>
