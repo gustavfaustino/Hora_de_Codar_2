@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <!-- Made by GustavG -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peso ideal</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <!-- Tendo como entrada a altura e o gênero designado ao nascer 
+ (codificado da seguinte forma: 1: feminino - 2: masculino - ) de uma pessoa, 
+ construa um programa que calcule e imprima seu peso ideal, utilizando as seguintes fórmulas.
+ Homens: (72.7*h) -58
+ Mulheres: (62.1*h) -44.7
+ -->
+  <body>
+    <!-- Início -->
+    <div class="container p-3">
+      <label for="altura" class="form-label">Digite sua altura:</label>
+      <input
+        type="number"
+        id="altura"
+        class="form-control"
+        placeholder="Sua altura aqui"
+      />
+
+      <!-- Radiobox de generos, pouco inclusivo a propósito -->
+      <div class="pt-2">
+        <p>Selecione agora seu sexo biológico:</p>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="masculino"
+            name="customRadioInline1"
+            class="custom-control-input"
+          />
+          <label class="custom-control-label" for="masculino">Masculino</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input
+            type="radio"
+            id="feminino"
+            name="customRadioInline1"
+            class="custom-control-input"
+          />
+          <label class="custom-control-label" for="feminino">Feminino</label>
+        </div>
+
+        <!-- Botão -->
+        <div class="pt-3">
+          <button class="btn btn-default" onclick="pesoIdeal()">
+            Clique aqui!
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Função JS -->
+    <script>
+      function pesoIdeal() {
+        const altura = parseFloat(document.getElementById("altura").value);
+
+        // Obtém o sexo selecionado
+        const radioboxesSexo = document.getElementsByName("customRadioInline1"); // Pegar ambos os radioboxes
+        let sexoSelecionado;
+        for (const radio of radioboxesSexo) {
+          if (radio.checked) {
+            sexoSelecionado = radio.id; // Use o ID do radio button ("masculino" ou "feminino")
+            break;
+          }
+        }
+
+        // Verifica se os dados foram inseridos corretamente
+        if (isNaN(altura) || !sexoSelecionado) {
+          alert("Por favor, insira sua altura e selecione seu sexo.");
+          return; // Sai da função se os dados estiverem inválidos
+        }
+
+        // Calcula o peso ideal
+        let pesoIdeal;
+        if (sexoSelecionado === "masculino") {
+          pesoIdeal = 72.7 * altura - 58;
+        } else {
+          // sexoSelecionado === "feminino"
+          pesoIdeal = 62.1 * altura - 44.7;
+        }
+
+        // Exibe o resultado (você pode personalizar a forma de exibição)
+        alert("Seu peso ideal é: " + pesoIdeal.toFixed(2) + " kg");
+      }
+    </script>
+  </body>
+</html>

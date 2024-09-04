@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <!-- Made by GustavG -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Micro calculadora</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      button {
+        margin-top: 30px;
+      }
+      #container-resultado {
+        display: none;
+      }
+      #resultado {
+        margin-top: 20px;
+        font-size: 1.2em;
+        font-weight: bold;
+        white-space: pre-line;
+      }
+    </style>
+  </head>
+  <!-- Escreva um programa para ler 2 valores inteiros informados
+  pelo usuário e uma das seguintes operações a serem executadas
+   (codificada da seguinte forma:
+    1. Adição, 2. Subtração, 3. Divisão, 4. Multiplicação).
+O programa deve calcular e escrever o resultado dessa operação sobre
+ os dois valores lidos. -->
+  <body>
+    <div class="container p-4">
+      <div>
+        <p>
+          Digite somente números inteiros e então selecione a operação desejada.
+        </p>
+        <br />
+      </div>
+      <!-- Primeira fileira -->
+      <div class="row">
+        <!-- Número 1 -->
+        <div class="col">
+          <label for="numero1" class="form-label"
+            >Digite o valor do 1° número:</label
+          >
+          <input
+            type="number"
+            id="numero1"
+            class="form-control"
+            placeholder="1° número aqui"
+          />
+        </div>
+        <!-- Número 2 -->
+        <div class="col">
+          <label for="numero2" class="form-label"
+            >Digite o valor do 2° número:</label
+          >
+          <input
+            type="number"
+            id="numero2"
+            class="form-control"
+            placeholder="2° número aqui"
+          />
+        </div>
+      </div>
+
+      <!-- Botões Bootstrap -->
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+          <button
+            type="button"
+            class="btn btn-primary btn-block"
+            onclick="adicao()"
+          >
+            Adição (+)
+          </button>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <button
+            type="button"
+            class="btn btn-secondary btn-block"
+            onclick="subtracao()"
+          >
+            Subtração (-)
+          </button>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <button
+            type="button"
+            class="btn btn-success btn-block"
+            onclick="divisao()"
+          >
+            Divisão(/)
+          </button>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <button
+            type="button"
+            class="btn btn-danger btn-block"
+            onclick="multiplicacao()"
+          >
+            Multiplicação(*)
+          </button>
+        </div>
+      </div>
+
+      <!-- Resultado -->
+      <div id="container-resultado">
+        <p id="resultado"></p>
+      </div>
+    </div>
+
+    <!-- Função JS -->
+    <script>
+      function adicao() {
+        const numero1 = parseInt(document.getElementById("numero1").value);
+        const numero2 = parseInt(document.getElementById("numero2").value);
+        var contaSoma = numero1 + numero2;
+
+        if (!isNaN(numero1, numero2)) {
+          document.getElementById("resultado").textContent = `
+        O valor da soma dos números ${numero1} e ${numero2}, é: ${contaSoma}
+        `;
+          document.getElementById("container-resultado").style.display =
+            "block";
+        } else {
+          alert("Digite valores válidos!");
+        }
+      }
+
+      function subtracao() {
+        const numero1 = parseInt(document.getElementById("numero1").value);
+        const numero2 = parseInt(document.getElementById("numero2").value);
+        var contaSub = numero1 - numero2;
+        if (!isNaN(numero1, numero2)) {
+          document.getElementById("resultado").textContent = `
+        O valor da subtração dos números ${numero1} e ${numero2}, é: ${contaSub}
+        `;
+          document.getElementById("container-resultado").style.display =
+            "block";
+        } else {
+          alert("Digite valores válidos!");
+        }
+      }
+
+      function divisao() {
+        const numero1 = parseInt(document.getElementById("numero1").value);
+        const numero2 = parseInt(document.getElementById("numero2").value);
+        var contaDivide = numero1 / numero2;
+        if (!isNaN(numero1, numero2)) {
+          document.getElementById("resultado").textContent = `
+        O valor da divisão dos números ${numero1} e ${numero2}, é: ${contaDivide}
+        `;
+          document.getElementById("container-resultado").style.display =
+            "block";
+        } else {
+          alert("Digite valores válidos!");
+        }
+      }
+      
+      function multiplicacao() {
+        const numero1 = parseInt(document.getElementById("numero1").value);
+        const numero2 = parseInt(document.getElementById("numero2").value);
+        var contaMultiplica = numero1 * numero2;
+        if (!isNaN(numero1, numero2)) {
+          document.getElementById("resultado").textContent = `
+        O valor da multiplicação dos números ${numero1} e ${numero2}, é: ${contaMultiplica}
+        `;
+          document.getElementById("container-resultado").style.display =
+            "block";
+        } else {
+          alert("Digite valores válidos!");
+        }
+      }
+    </script>
+  </body>
+</html>
